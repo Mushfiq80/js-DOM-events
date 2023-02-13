@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add new comment</title>
+</head>
+
+<body>
+    <h1>Please add your comment</h1>
+    <div id="comment-conatiner">
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non soluta officiis quam repellendus neque,
+            suscipit quasi saepe consectetur quis in eveniet numquam accusamus corrupti quo? Dolorem exercitationem
+            ratione tempore facilis?</p>
+
+        <p>Temporibus perspiciatis maxime veniam nam minus adipisci iure tempore possimus consequatur architecto.
+            Corrupti, sunt ipsum amet commodi soluta explicabo at molestiae suscipit consectetur sed doloribus quas ipsa
+            dicta tempora iusto!</p>
+
+        <p>Provident, reprehenderit deserunt beatae ex nam natus? In, dolorem sed deleniti odit cumque quod hic animi
+            perferendis! Quam pariatur incidunt reiciendis praesentium nemo dolores quasi voluptatibus, architecto
+            dignissimos, placeat rerum.</p>
+    </div>
+    <div>
+        <textarea name="" id="new-comment" cols="60" rows="5"></textarea> <br>
+        <button id="btn-post">Post</button>
+    </div>
+
+    <div>
+        <h1>Explore more event</h1>
+        <button id="btn-more">Events</button>
+    </div>
+
+    <div>
+        <h1 id="delete-title">Delete Operation if you write delete inside the input form only then the delete button
+            activated</h1>
+
+        <input id="delete-confirm" placeholder="Please type 'delete'">
+        <button id="delete-btn" disabled>Delete</button>
+    </div>
+
+    <script>
+
+        // step 1
+        document.getElementById('btn-post').addEventListener('click', function () {
+            // Step - 2
+            const commentBox = document.getElementById('new-comment');
+            const newComment = commentBox.value;
+            // console.log(newComment);
+            const commentContainer = document.getElementById('comment-conatiner');
+            const para = document.createElement('p');
+            para.innerText = newComment;
+            commentContainer.appendChild(para)
+
+            // clearing box
+            commentBox.value = '';
+        })
+
+        document.getElementById('btn-more').addEventListener('mouseenter', function () {
+            console.log('Event triggered');
+        })
+
+        // Deletion part
+        document.getElementById('delete-confirm').addEventListener('keyup', function (event) {
+            const text = event.target.value;
+            const deleteButton = document.getElementById('delete-btn');
+            if (text === 'delete') {
+                deleteButton.removeAttribute('disabled');
+
+            }
+            else {
+                deleteButton.setAttribute('disabled', true);
+            }
+        })
+        // header delete
+        document.getElementById('delete-btn').addEventListener('click', function () {
+            const secret = document.getElementById('delete-title');
+            secret.style.display = 'none';
+
+        })
+
+
+    </script>
+</body>
+
+</html>
